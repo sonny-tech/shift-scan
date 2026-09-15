@@ -8,24 +8,31 @@ const RATE_LIMIT = 10 // max requests
 const RATE_WINDOW_MS = 60 * 60 * 1000 // per hour, per IP
 
 async function checkRateLimit(ip) {
-  const store = getStore('rate-limits')
-  const key = `ip:${ip}`
-  const now = Date.now()
+  try {
+    const store = getStore('rate-limits')
+    const key = `ip:${ip}`
+    const now = Date.now()
 
-  const existing = await store.get(key, { type: 'json' })
+    const existing = await store.get(key, { type: 'json' })
 
-  if (!existing || now - existing.windowStart > RATE_WINDOW_MS) {
-    await store.setJSON(key, { count: 1, windowStart: now })
+    if (!existing || now - existing.windowStart > RATE_WINDOW_MS) {
+      await store.setJSON(key, { count: 1, windowStart: now })
+      return { allowed: true }
+    }
+
+    if (existing.count >= RATE_LIMIT) {
+      const retryAfterMs = RATE_WINDOW_MS - (now - existing.windowStart)
+      return { allowed: false, retryAfterMinutes: Math.ceil(retryAfterMs / 60000) }
+    }
+
+    await store.setJSON(key, { count: existing.count + 1, windowStart: existing.windowStart })
+    return { allowed: true }
+  } catch (err) {
+    // Fail open rather than crashing the request if Blobs isn't available
+    // in this environment — rate limiting just won't be enforced.
+    console.warn('Rate limit check skipped:', err.message)
     return { allowed: true }
   }
-
-  if (existing.count >= RATE_LIMIT) {
-    const retryAfterMs = RATE_WINDOW_MS - (now - existing.windowStart)
-    return { allowed: false, retryAfterMinutes: Math.ceil(retryAfterMs / 60000) }
-  }
-
-  await store.setJSON(key, { count: existing.count + 1, windowStart: existing.windowStart })
-  return { allowed: true }
 }
 
 // Netlify Function: POST /.netlify/functions/parse-calendar
