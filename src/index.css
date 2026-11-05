@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --soft: #f7f7f8;
-  --ink: #0a0a0c;
-  --ink-2: #5f6168;
-  --ink-3: #9a9ca3;
-  --line: #e9e9ec;
-  --line-strong: #d8d8dd;
+  --bg: #0b0144;
+  --surface: #110853;
+  --soft: #170e5f;
+  --ink: #ffffff;
+  --ink-2: rgba(255, 255, 255, 0.7);
+  --ink-3: rgba(255, 255, 255, 0.46);
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.24);
   --green: #22c55e;
   --amber: #f5b301;
-  --red: #d92d20;
-  --red-soft: #fef3f2;
-  --shadow-card: 0 1px 2px rgba(10, 10, 12, 0.04), 0 10px 32px rgba(10, 10, 12, 0.07);
+  --red: #ff8a80;
+  --red-soft: rgba(255, 110, 96, 0.14);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 40px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
 }
 
 * {
@@ -22,6 +23,10 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+}
+
+html {
+  background: var(--bg);
 }
 
 body {
@@ -49,7 +54,7 @@ input {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(11, 1, 68, 0.8);
   backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--line);
@@ -79,15 +84,15 @@ input {
 .logo {
   display: inline-grid;
   place-items: center;
-  background: linear-gradient(160deg, #26262b 0%, #0a0a0c 70%);
+  background: linear-gradient(160deg, #ffffff 0%, #d9d6f2 100%);
   border-radius: 28%;
-  box-shadow: 0 1px 2px rgba(10, 10, 12, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .logo-inner {
   width: 46%;
   height: 46%;
-  background: #fff;
+  background: var(--bg);
   border-radius: 32%;
   display: grid;
   place-items: center;
@@ -98,7 +103,7 @@ input {
   content: '';
   width: 36%;
   height: 36%;
-  background: var(--ink);
+  background: #fff;
   border-radius: 30%;
 }
 
@@ -131,15 +136,15 @@ input {
 
 .btn-dark {
   background: var(--ink);
-  color: #fff;
+  color: var(--bg);
 }
 
 .btn-dark:hover:not(:disabled) {
-  background: #26262b;
+  background: #e4e2f7;
 }
 
 .btn-dark:disabled {
-  background: #e4e4e8;
+  background: rgba(255, 255, 255, 0.12);
   color: var(--ink-3);
   cursor: not-allowed;
 }
@@ -208,7 +213,7 @@ input {
 }
 
 .hero h1 .muted {
-  background: linear-gradient(180deg, #55575e 0%, #8a8c93 100%);
+  background: linear-gradient(180deg, #b4afe3 0%, #7d77bd 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -271,7 +276,7 @@ input {
   margin-bottom: 8px;
   border-radius: 14px;
   background: var(--ink);
-  color: #fff;
+  color: var(--bg);
 }
 
 .drop-title {
@@ -350,7 +355,7 @@ input {
 .fc-bar {
   height: 8px;
   border-radius: 4px;
-  background: #ececef;
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .fc-bar-dark {
@@ -361,7 +366,7 @@ input {
 .fc-line {
   height: 5px;
   border-radius: 3px;
-  background: #ececef;
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .fc-short {
@@ -434,7 +439,7 @@ input {
   width: 100%;
   padding: 14px 16px;
   background: var(--red-soft);
-  border: 1px solid #fecdca;
+  border: 1px solid rgba(255, 138, 128, 0.4);
   border-radius: 12px;
   color: var(--red);
   font-size: 14px;
@@ -530,7 +535,7 @@ input {
   outline: none;
   background: var(--surface);
   border-color: var(--ink);
-  box-shadow: 0 0 0 3px rgba(10, 10, 12, 0.08);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.14);
 }
 
 .remove {
@@ -585,7 +590,7 @@ input {
   z-index: 100;
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(11, 1, 68, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   animation: loader-in 0.35s ease both;
@@ -595,7 +600,7 @@ input {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(10, 10, 12, 0.09) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
   background-size: 22px 22px;
   -webkit-mask-image: radial-gradient(circle at center, #000 0%, transparent 62%);
   mask-image: radial-gradient(circle at center, #000 0%, transparent 62%);
@@ -621,7 +626,7 @@ input {
 }
 
 .loader-mark .logo {
-  box-shadow: 0 12px 36px rgba(10, 10, 12, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 56px rgba(255, 255, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .loader-ring {
@@ -650,7 +655,7 @@ input {
   height: 3px;
   margin-top: 20px;
   border-radius: 999px;
-  background: #ececef;
+  background: rgba(255, 255, 255, 0.14);
   overflow: hidden;
 }
 
@@ -794,5 +799,56 @@ input {
 
   .results-actions .btn {
     width: 100%;
+  }
+}
+
+/* ---------- Sonny.dev credit ---------- */
+
+.credit {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(11, 1, 68, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  color: var(--ink-2);
+  font-size: 12px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.credit:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.credit img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: block;
+}
+
+.credit strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .credit {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .footer {
+    padding-bottom: 104px;
   }
 }

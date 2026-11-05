@@ -324,6 +324,18 @@ export default function App() {
           calendar until you import the file yourself.
         </p>
       </footer>
+
+      <a
+        className="credit"
+        href="https://sonny.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="/sonny-dev-logo.png" alt="" width="26" height="26" />
+        <span>
+          Brought to you by <strong>Sonny.dev</strong>
+        </span>
+      </a>
     </div>
   )
 }
