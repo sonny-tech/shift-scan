@@ -327,7 +327,7 @@ export default function App() {
 
       <a
         className="credit"
-        href="https://sonny.dev"
+        href="https://sonnydev2026.com"
         target="_blank"
         rel="noopener noreferrer"
       >
